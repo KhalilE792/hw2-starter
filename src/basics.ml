@@ -6,14 +6,19 @@ let abs x =
 (* Part 1: Non-Recursive Functions *)
 (***********************************)
 
-let rev_tup (tup : 'a * 'b) = failwith "unimplemented"
-let rev_triple (tup : 'a * 'b * 'c) = failwith "unimplemented"
+let rev_tup (tup : 'a * 'b) = (snd tup, fst tup)
+let rev_triple (tup : 'a * 'b * 'c) = (thd3 tup, snd3 tup, fst3 tup)
 
-let is_odd x = failwith "unimplemented"
+let is_odd x = if (x % 2) = 1 then true else false
 
-let is_older (date1: int * int * int) (date2: int * int * int) = failwith "unimplemented"
+let is_older (date1: int * int * int) (date2: int * int * int) = 
+  if fst3 date1 < fst3 date2 then true else
+  if fst3 date1 > fst3 date2 then false else
+    if snd3 date1 < snd3 date2 then true else
+    if snd3 date1 > snd3 date2 then false else
+      if thd3 date1 < thd3 date2 then true else false
 
-let to_us_format (date1: int * int * int) = failwith "unimplemented"
+let to_us_format (date1: int * int * int) = (snd3 date1, thd3 date1, fst3 date1)
 (*******************************)
 (* Part 2: Recursive Functions *)
 (*******************************)
