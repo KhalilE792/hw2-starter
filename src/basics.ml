@@ -23,16 +23,24 @@ let to_us_format (date1: int * int * int) = (snd3 date1, thd3 date1, fst3 date1)
 (* Part 2: Recursive Functions *)
 (*******************************)
 
-let rec pow x p = failwith "unimplemented"
+let rec pow x p = if p = 0 then 1 else (x * pow x (p - 1))
 
-let rec fac n = failwith "unimplemented"
+let rec fac n = if n = 1 then 1 else (n * fac (n - 1))
 
 (*****************)
 (* Part 3: Lists *)
 (*****************)
 
-let rec get_nth ((idx:int), (lst: 'a list)) = failwith "unimplemented"
+let rec get_nth ((idx:int), (lst: 'a list)) = if idx = 0 then lst.hd else get_nth (idx - 1) lst.tl
 
-let larger lst1 lst2 = failwith "unimplemented"
+(*helper function*)
+let rec list_length (lst: 'a list) = if lst = [] then 0 else (1 + list.length lst.tl)
 
-let sum lst1 lst2 = failwith "unimplemented"
+let larger lst1 lst2 = 
+  if list_length lst1 = list_length lst2 then [] else
+  if list_length lst1 > list_length lst2 then lst1 else lst2
+
+(*helper function*)
+let rec single_sum (lst: int list) = if lst = [] then 0 else (lst.hd + single_sum lst.tl)
+
+let sum lst1 lst2 = single_sum lst1 + single_sum lst2
