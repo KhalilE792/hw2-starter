@@ -31,16 +31,16 @@ let rec fac n = if n = 1 then 1 else (n * fac (n - 1))
 (* Part 3: Lists *)
 (*****************)
 
-let rec get_nth ((idx:int), (lst: 'a list)) = if idx = 0 then lst.hd else get_nth (idx - 1) lst.tl
+let rec get_nth ((idx:int), (lst: 'a list)) = if idx = 0 then List.hd lst else get_nth (idx - 1) List.tl lst
 
 (*helper function*)
-let rec list_length (lst: 'a list) = if lst = [] then 0 else (1 + list.length lst.tl)
+let rec list_length (lst: 'a list) = if lst = [] then 0 else (1 + list.length List.tl lst)
 
 let larger lst1 lst2 = 
   if list_length lst1 = list_length lst2 then [] else
   if list_length lst1 > list_length lst2 then lst1 else lst2
 
 (*helper function*)
-let rec single_sum (lst: int list) = if lst = [] then 0 else (lst.hd + single_sum lst.tl)
+let rec single_sum (lst: int list) = if lst = [] then 0 else (List.hd lst + single_sum List.tl lst)
 
 let sum lst1 lst2 = single_sum lst1 + single_sum lst2
